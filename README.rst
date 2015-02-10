@@ -1,3 +1,25 @@
+=========
+Amplidata
+=========
+
+This is a fork of the PyMongo driver for MongoDB that specifically
+adds the option to set hostname validation on or off when supplying
+your own CA certificates via ``ssl_ca_certs``. This is the same
+as setting ``sslAllowInvalidHostnames`` in MongDB itself.
+
+For more information, please see:
+`Jira bug PYTHON-834 <https://jira.mongodb.org/browse/PYTHON-834>`_
+`Github pull request 251 <https://github.com/mongodb/mongo-python-driver/pull/251>`_
+
+We feel that this is an important enough feature to warrant a fork,
+even if temporary, to clients that need proper end-to-end encryption
+with ``ssl_cert_reqs`` set to ``ssl.CERT_REQUIRED`` without validating
+the hostname. This is typically required when the network is possibly
+hostile but you control the MongoDB system with your own CA cert and
+you've issued one yourself. However you cannot guarantee the hostname,
+such as on an Amazon service or deployment on a client site with
+their own network topology and servers.
+
 =======
 PyMongo
 =======
