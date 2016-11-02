@@ -67,6 +67,7 @@ MAX_RETRY = 3
 
 MONITORS = set()
 
+
 def register_monitor(monitor):
     ref = weakref.ref(monitor, _on_monitor_deleted)
     MONITORS.add(ref)

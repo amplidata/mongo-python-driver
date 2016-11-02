@@ -21,7 +21,7 @@ import weakref
 
 from pymongo import thread_util
 from pymongo.common import HAS_SSL
-from pymongo.errors import ConnectionFailure, ConfigurationError
+from pymongo.errors import ConnectionFailure, ConfigurationError, AutoReconnect
 
 try:
     from ssl import match_hostname
@@ -304,8 +304,8 @@ class Pool:
 
             except ssl.SSLError:
                 sock.close()
-                raise ConnectionFailure("SSL handshake failed. MongoDB may "
-                                        "not be configured with SSL support.")
+                raise AutoReconnect("SSL handshake failed. Check mongo ssl config "
+                                    "if the problem persists")
 
         sock.settimeout(self.net_timeout)
         return SocketInfo(sock, self.pool_id, hostname)
