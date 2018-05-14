@@ -755,7 +755,7 @@ def _configured_socket(address, options):
                 sock = ssl_context.wrap_socket(sock)
         except IOError as exc:
             sock.close()
-            raise ConnectionFailure("SSL handshake failed: %s" % (str(exc),))
+            raise AutoReconnect("SSL handshake failed: %s" % (str(exc),))
         if ssl_context.verify_mode and options.ssl_match_hostname:
             try:
                 match_hostname(sock.getpeercert(), hostname=host)
