@@ -31,7 +31,7 @@ try:
 except ImportError:
     _HAVE_SPHINX = False
 
-version = "3.6.0"
+version = "3.6.0-1"
 
 f = open("README.rst")
 try:
@@ -358,15 +358,15 @@ else:
     extra_opts['ext_modules'] = ext_modules
 
 setup(
-    name="pymongo",
+    name="pymongo-amplidata",
     version=version,
     description="Python driver for MongoDB <http://www.mongodb.org>",
     long_description=readme_content,
     author="Mike Dirolf",
     author_email="mongodb-user@googlegroups.com",
-    maintainer="Bernie Hackett",
-    maintainer_email="bernie@mongodb.com",
-    url="http://github.com/mongodb/mongo-python-driver",
+    maintainer="Bret Curtis",
+    maintainer_email="bret.curtis@wdc.com",
+    url="https://github.com/amplidata/mongo-python-driver",
     keywords=["mongo", "mongodb", "pymongo", "gridfs", "bson"],
     install_requires=[],
     license="Apache License, Version 2.0",
